@@ -44,31 +44,25 @@ A mobile application that uses Bluetooth RSSI (Received Signal Strength Indicato
 ```mermaid
 graph TB
     subgraph "Data Collection"
-        A[Smartphone A<br/>Xiaomi Redmi 7A<br/>Bluetooth RSSI Source] -->|Bluetooth Signal| B[Smartphone B<br/>Huawei CAM-L03<br/>RSSI Scanner]
+        A[Smartphone A - Xiaomi Redmi 7A] -->|Bluetooth Signal| B[Smartphone B - Huawei CAM-L03]
     end
 
     subgraph "Data Processing"
-        B --> C[Raw RSSI Data<br/>1,612 measurements]
-        C --> D[Mean Filter<br/>Window size = 10]
+        B --> C[Raw RSSI Data - 1612 measurements]
+        C --> D[Mean Filter - Window size 10]
         D --> E[Filtered Dataset]
     end
 
     subgraph "Model Training"
-        E --> F[Neural Network<br/>Binary Classification]
-        F --> G[Trained Model<br/>89.89% accuracy]
+        E --> F[Neural Network - Binary Classification]
+        F --> G[Trained Model - 89.89% accuracy]
     end
 
     subgraph "Deployment"
         G --> H[TFLite Converter]
-        H --> I[model.tflite<br/>816 bytes]
-        I --> J[Android App<br/>On-device Inference]
+        H --> I[model.tflite - 816 bytes]
+        I --> J[Android App - On-device Inference]
     end
-
-    style A fill:#e1f5fe
-    style B fill:#e1f5fe
-    style F fill:#fff3e0
-    style I fill:#e8f5e9
-    style J fill:#e8f5e9
 ```
 
 ---
@@ -124,8 +118,8 @@ flowchart LR
     end
 
     subgraph "2. Filtering"
-        B1[Raw RSSI data] --> B2[Mean Filter<br/>Window = 10]
-        B2 --> B3[Reduced variance<br/>Narrower overlap zone]
+        B1[Raw RSSI data] --> B2[Mean Filter - Window 10]
+        B2 --> B3[Reduced variance]
     end
 
     subgraph "3. Model Selection"
@@ -137,7 +131,7 @@ flowchart LR
     end
 
     subgraph "4. Deployment"
-        D1[Train model<br/>200 epochs] --> D2[Save as SavedModel]
+        D1[Train model - 200 epochs] --> D2[Save as SavedModel]
         D2 --> D3[Convert to TFLite]
         D3 --> D4[Embed in Android app]
     end
@@ -148,10 +142,6 @@ flowchart LR
     B3 --> C3
     B3 --> C5
     C6 --> D1
-
-    style A4 fill:#ffcdd2
-    style C6 fill:#c8e6c9
-    style D4 fill:#bbdefb
 ```
 
 ### Data Collection
@@ -218,11 +208,13 @@ graph LR
 The model's decision boundary was analyzed by generating 1,000 random RSSI values (0 to 100) and plotting the probability of breach:
 
 ```mermaid
-xychart-beta
-    title "Probability of Social Distance Breach vs RSSI"
-    x-axis "RSSI (dBm)" [-60, -55, -50, -45, -40, -35, -30]
-    y-axis "Probability of Breach" [0, 0.25, 0.5, 0.75, 1.0]
-    line [1.0, 0.95, 0.75, 0.5, 0.25, 0.05, 0.0]
+graph LR
+    A["RSSI < -48 dBm: P > 80% - Breach"] --> B["RSSI = -53 dBm: P = 50% - Threshold"]
+    B --> C["RSSI > -48 dBm: P < 20% - Compliant"]
+
+    style A fill:#ffcdd2
+    style B fill:#fff3e0
+    style C fill:#c8e6c9
 ```
 
 - **< -48 dBm**: Probability > 80% — guaranteed breach
