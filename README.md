@@ -19,7 +19,7 @@ A mobile application that uses Bluetooth RSSI (Received Signal Strength Indicato
 <p align="center">
   <a href="https://alvaro-martin.github.io/personal-site/">Personal Site</a> ·
   <a href="https://github.com/alvaro-martin">GitHub</a> ·
-  <a href="https://linkedin.com/in/almartinuni">LinkedIn</a>
+  <a href="https://linkedin.com/in/almartinuni">LinkedIn</a> ·
   <a href="https://www.sciencedirect.com/science/chapter/edited-volume/pii/B978012824536100006X">Paper Link</a>
 </p>
 
@@ -46,26 +46,26 @@ A mobile application that uses Bluetooth RSSI (Received Signal Strength Indicato
 ## Project Overview
 
 ```mermaid
-graph TB
+graph TD
     subgraph "Data Collection"
-        A[Smartphone A - Xiaomi Redmi 7A] -->|Bluetooth Signal| B[Smartphone B - Huawei CAM-L03]
+        A[Smartphone A: Xiaomi Redmi 7A] -->|Bluetooth Signal| B[Smartphone B: Huawei CAM-L03]
     end
 
     subgraph "Data Processing"
-        B --> C[Raw RSSI Data - 1612 measurements]
-        C --> D[Mean Filter - Window size 10]
+        B --> C[Raw RSSI Data: 1612 measurements]
+        C --> D[Mean Filter: Window size 10]
         D --> E[Filtered Dataset]
     end
 
     subgraph "Model Training"
-        E --> F[Neural Network - Binary Classification]
-        F --> G[Trained Model - 89.89% accuracy]
+        E --> F[Neural Network: Binary Classification]
+        F --> G[Trained Model: 89.89% accuracy]
     end
 
     subgraph "Deployment"
         G --> H[TFLite Converter]
-        H --> I[model.tflite - 816 bytes]
-        I --> J[Android App - On-device Inference]
+        H --> I[model.tflite: 816 bytes]
+        I --> J[Android App: On-device Inference]
     end
 ```
 
