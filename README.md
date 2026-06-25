@@ -37,6 +37,10 @@ A mobile application that uses Bluetooth RSSI (Received Signal Strength Indicato
 >
 > This research was published by Elsevier in the book *Computational Science and Artificial Intelligence in Healthcare*.
 
+<p align="center">
+  <img src="assets/rssi.webp" alt="Bluetooth RSSI for Social Distancing" width="400" />
+</p>
+
 ---
 
 ## Project Overview
@@ -84,7 +88,8 @@ data-science-for-covid19/
 │   └── gradle/                       # Gradle wrapper
 ├── assets/
 │   ├── me2.webp                      # Author profile photo
-│   └── paper.pdf                     # Published paper
+│   ├── rssi.webp                     # Bluetooth RSSI illustration
+│   └── paper.pdf                     # Published paper (PDF)
 ├── LICENSE                           # MIT License
 └── README.md
 ```
@@ -359,6 +364,8 @@ If you use this work, please cite:
 ```
 
 **Published Article**: [ScienceDirect](https://www.sciencedirect.com/science/chapter/edited-volume/pii/B978012824536100006X)
+
+> A PDF copy of the paper is also available in [`assets/paper.pdf`](assets/paper.pdf).
 
 ---
 
